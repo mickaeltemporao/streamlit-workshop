@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "streamlit-workshop"
+version = "0.1.0"
+description = ""
+authors = ["Mickael Temporão <mickael@delphia.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.0.1"
+streamlit = "^0.56.0"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.12.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
