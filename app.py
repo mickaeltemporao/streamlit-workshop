@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 """
 # Let's play again
@@ -12,4 +13,10 @@ map_data = pd.DataFrame(
     columns=['lat', 'lon'])
 
 st.map(map_data)
+
+option = st.sidebar.selectbox(
+    'Which number do you like best?',
+     map_data['lat'])
+
+'You selected:', option
 
