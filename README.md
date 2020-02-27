@@ -23,6 +23,10 @@ poetry add pandas, streamlit
 poetry shell
 ```
 
+## Documentation
+
+[Official Streamlit Documentation](https://docs.streamlit.io)
+
 ## Example
 
 ### Hello World
@@ -44,18 +48,52 @@ streamlit run app.py
 This `st.write` is the swiss-army knife of Streamlit commands. 
 It does different things depending on what you throw at it.
 
-### Latex
+### Add text and data
+
+#### Titles
+```python
+st.title("Here's my app.")
+```
+
+#### Write a data frame
+
+```python
+st.write("Here's our first attempt at using data to create a table:")
+st.write(pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+}))
+
+```
+
+#### And also latex 
 
 ```python
 st.latex(
-    '''
-    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
-    \sum_{k=0}^{n-1} ar^k =
-    a \left(\frac{1-r^{n}}{1-r}\right)
+    r'''
+    \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)}
     '''
 )
 ```
 
+### Draw charts and maps
+
+```python
+chart_data = pd.DataFrame(
+     np.random.randn(20, 3),
+     columns=['a', 'b', 'c'])
+
+st.line_chart(chart_data)
+```
+
+### Maps
+```python
+map_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns=['lat', 'lon'])
+
+st.map(map_data)
+```
 
 ## Streamlit Magic
 
@@ -79,3 +117,35 @@ x = 10
 'x', x  # <-- Draw the string 'x' and then the value of x
 ```
 
+## Interactive widgets
+
+### Checkboxes
+
+```python
+if st.checkbox('Show dataframe'):
+    chart_data = pd.DataFrame(
+       np.random.randn(20, 3),
+       columns=['a', 'b', 'c'])
+
+    st.line_chart(chart_data)
+```
+
+### Selectbox
+
+```python
+option = st.selectbox(
+    'Which number do you like best?',
+     df['first column'])
+
+'You selected: ', option
+```
+
+### Sidebars
+
+```python
+option = st.sidebar.selectbox(
+    'Which number do you like best?',
+     df['first column'])
+
+'You selected:', option
+```
