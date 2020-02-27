@@ -1,12 +1,10 @@
 # Streamlit Workshop 
 
-... or how to quickly build ML prototypes in Python.
-
 ### What 
 - Quickly build interactive web application 
 - Without dev knowledge but of course helps to have some...
 
-### Built on 3 Principles
+### 3 Principles
 - Embrace Python scripting
 - Weave in interaction
 - Deploy instantly
@@ -43,9 +41,28 @@ then simply run
 streamlit run app.py
 ```
 
+This `st.write` is the swiss-army knife of Streamlit commands. 
+It does different things depending on what you throw at it.
+
+### Latex
+
+```python
+st.latex(
+    '''
+    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+    \sum_{k=0}^{n-1} ar^k =
+    a \left(\frac{1-r^{n}}{1-r}\right)
+    '''
+)
+```
+
+
 ## Streamlit Magic
 
-Magic commands are a feature in Streamlit that allows you to write markdown and data to your app with very few keypresses. Here’s an example:
+Magic commands are a feature in Streamlit. 
+They allow you to quickly write markdown and data to your app. 
+
+Here’s an example:
 
 ```python
 # Draw a title and some text to the app:
